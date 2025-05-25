@@ -429,6 +429,19 @@ footer {
     .about, .academics, .community, .facilities, .contact {
         padding: 3rem 5%;
     }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+    }
 }
 
 /* Animation */

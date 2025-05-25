@@ -1,6 +1,6 @@
-# Aarambha School Website
+# Arambha School Website
 
-A modern, responsive website for Aarambha School built with HTML, CSS, and JavaScript.
+A modern, responsive website for Arambha School built with HTML, CSS, and JavaScript.
 
 ## Features
 
