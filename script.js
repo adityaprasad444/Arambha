@@ -1,9 +1,9 @@
-// Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
 });
 
 // Smooth Scrolling for Navigation Links
@@ -17,9 +17,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 block: 'start'
             });
             // Close mobile menu if open
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
-            }
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
         }
     });
 });
@@ -53,14 +52,14 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
-        
+
         try {
             // Here you would typically send the data to your backend
             console.log('Form submitted:', data);
-            
+
             // Show success message
             alert('Thank you for your message! We will get back to you soon.');
             contactForm.reset();
@@ -75,57 +74,9 @@ if (contactForm) {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.backgroundColor = '#fff';
-        navbar.style.boxShadow = 'none';
-    }
-});
-
-// Gallery Image Click Handler
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', function() {
-        // Create modal
-        const modal = document.createElement('div');
-        modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '100%';
-        modal.style.height = '100%';
-        modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
-        modal.style.display = 'flex';
-        modal.style.justifyContent = 'center';
-        modal.style.alignItems = 'center';
-        modal.style.zIndex = '1000';
-        modal.style.cursor = 'pointer';
-
-        // Create image
-        const modalImg = document.createElement('img');
-        modalImg.src = this.src;
-        modalImg.style.maxWidth = '90%';
-        modalImg.style.maxHeight = '90%';
-        modalImg.style.objectFit = 'contain';
-
-        // Add image to modal
-        modal.appendChild(modalImg);
-
-        // Add modal to body
-        document.body.appendChild(modal);
-
-        // Close modal on click
-        modal.addEventListener('click', () => {
-            modal.remove();
-        });
-    });
-});
-
-// Responsive navigation
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        navLinks.style.display = 'flex';
-    } else {
-        navLinks.style.display = 'none';
+        navbar.classList.remove('scrolled');
     }
 });
 
@@ -135,7 +86,7 @@ const navItems = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
